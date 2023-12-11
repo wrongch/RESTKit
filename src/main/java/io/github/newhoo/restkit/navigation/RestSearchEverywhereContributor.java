@@ -176,7 +176,7 @@ public class RestSearchEverywhereContributor implements WeightedSearchEverywhere
                 ItemMatchers itemMatchers = getItemMatchers(list, value);
                 RestItem item = (RestItem) value;
                 String name = item.getUrl() + " ";
-                String locationString = item.getDescription();
+                String locationString = item.getModuleName() + "::" + item.getDescription();
 
 //                renderer.append(name, nameAttributes);
                 SpeedSearchUtil.appendColoredFragmentForMatcher(name, renderer, nameAttributes, itemMatchers.nameMatcher, bgColor, selected);
