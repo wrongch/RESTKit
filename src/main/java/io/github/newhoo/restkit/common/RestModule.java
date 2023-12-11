@@ -14,7 +14,7 @@ public class RestModule {
     private List<RestItem> restItems;
 
     public String getOrderKey() {
-        return restItems.isEmpty() ? "" : restItems.get(0).getFramework();
+        return moduleName; //restItems.isEmpty() ? "" : restItems.get(0).getFramework();
     }
 
     @Override

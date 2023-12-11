@@ -2,20 +2,10 @@
     <id>io.github.newhoo.restkit</id>
     <name>RESTKit</name>
     <!--  <version>2.0.5</version>-->
-    <vendor email="huzunrong@foxmail.com" url="https://github.com/newhoo/RESTKit">RESTKit</vendor>
+    <vendor email="wrongch@gmail.com" url="https://github.com/wrongch/RESTKit">RESTKit</vendor>
 
     <description><![CDATA[
-    <p>Another powerful toolkit for restful service development.</p>
-
-    <ul>
-        <li>Restful service automatic scanning, display, searching and navigation.</li>
-        <li>Powerful request client supported multiple protocol, environment variable, parameter library and request script.</li>
-        <li>Plugin extension point helps scanning custom restful services from other frameworks.</li>
-        <li>Support Spring MVC / SpringBoot with java and kotlin for idea by default.</li>
-        <li>Support more jetbrains ides, and provide api local storage by default.</li>
-    </ul>
-
-    <br/>
+    <p>Forked from https://github.com/newhoo/RESTKit</p>
 
     <p>一套功能强大的 Restful 服务开发辅助工具集</p>
 
@@ -27,113 +17,22 @@
         <li>支持更多的jetbrains产品，不仅仅是idea，且默认支持保存接口；</li>
     </ul>
 
-    <a href="https://github.com/newhoo/RESTKit">Github</a> | <a href="https://gitee.com/newhoo/RESTKit">Gitee</a> | <a href="https://www.yuque.com/newhoo/restkit">Yuque(语雀)</a>
+    <a href="https://github.com/wrongch/RESTKit">Github</a>
     <br/>
-
-    <img src="https://s3.bmp.ovh/imgs/2022/03/29/8b2aa43c50d0db03.png" />
     ]]></description>
 
     <change-notes><![CDATA[
-        2.1.2
+        3.3.0
         <ul>
-            <li>support Config tab parameter.</li>
-            <li>Optimize & Fix bugs.</li>
-        </ul>
-
-        2.1.1
-        <ul>
-            <li>fix bugs.</li>
-        </ul>
-
-        2.1.0
-        <ul>
-            <li>fix bugs.</li>
-        </ul>
-
-        2.0.9
-        <ul>
-            <li>fix bugs.</li>
-        </ul>
-
-        2.0.8
-        <ul>
-            <li>Support ssl.</li>
-            <li>Optimize http request, support upload/download file.</li>
-            <li>Optimize curl.</li>
-            <br/>
-            <li>支持SSL（单项认证和双向认证）</li>
-            <li>优化http请求，支持上传下载文件</li>
-            <li>优化复制curl</li>
-        </ul>
-
-        2.0.6
-        <ul>
-            <li>fix bugs with 2022.2.</li>
-        </ul>
-
-        2.0.5
-        <ul>
-            <li>Add icon for springmvc mapping methods. Enable [Jump to tree using method line marker] in the setting.</li>
-            <li>Remove jump to tree intention.</li>
-            <br/>
-            <li>添加图标，支持springmvc方法快速生成请求，在设置中启用【Jump to tree using method line marker】</li>
-            <li>移除上下文菜单中的跳转到树窗口</li>
-        </ul>
-        <img src = 'https://s3.bmp.ovh/imgs/2022/04/10/3481cea48dae9d12.png' />
-        <br/>
-
-        2.0.4
-        <ul>
-            <li>Optimize details.</li>
-            <br/>
-            <li>优化细节</li>
-        </ul>
-
-        2.0.3
-        <ul>
-            <li>support api group by file name.</li>
-            <li>support rest client ep.</li>
-            <li>fix bugs.</li>
-            <br/>
-            <li>扫描的API支持按文件名显示分组.</li>
-            <li>发送请求提供扩展点，即将提供Dubbo服务支持.</li>
-        </ul>
-
-        2.0.2
-        <ul>
-            <li>more powerful api local store, support synchronization in different IDE.</li>
-            <li>fix bugs.</li>
-            <br/>
-            <li>API本地存储升级，支持跨IDE同步.</li>
-        </ul>
-
-        2.0.1
-        <ul>
-            <li>support more jetbrains ides.</li>
-            <li>support api local storage, export and import by default.</li>
-            <li>most particular optimization.</li>
-            <br/>
-            <li>支持更多的jetbrains产品</li>
-            <li>默认支持API本地存储/导出/导入</li>
-            <li>大量细节优化</li>
-        </ul>
-
-        2.0.0
-        <ul>
-            <li>add extension for scanning restful services from other web framework.</li>
-            <li>support some common config.</li>
-            <li>support pre-request and post-request script.</li>
-            <br/>
-            <li>提供扩展点，支持自定义web框架中的接口扫描与展示</li>
-            <li>增加一些通用配置</li>
-            <li>支持请求前置/后置脚本</li>
+            <li>支持Idea2023.3</li>
+            <li>支持FeignClient</li>
         </ul>
     ]]>
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <!--    until-build="202.*"-->
-    <idea-version since-build="223.0"/>
+    <idea-version since-build="233.0"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html on how to target different products -->
     <!-- uncomment to enable plugin in all products -->
