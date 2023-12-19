@@ -2,7 +2,7 @@
 
 ## 概述
 支持扩展API列表项，实现一些个性化展示及操作。
-根据扩展点：`io.github.newhoo.restkit.restful.ep.RestItemDetailProvider`
+根据扩展点：`io.github.wrongch.restkit.restful.ep.RestItemDetailProvider`
 ## 源码说明
 
 - RestItemDetailProvider
@@ -15,7 +15,7 @@
  */
 public interface RestItemDetailProvider {
 
-    ExtensionPointName<RestItemDetailProvider> EP_NAME = ExtensionPointName.create("io.github.newhoo.restkit.restItemDetail");
+    ExtensionPointName<RestItemDetailProvider> EP_NAME = ExtensionPointName.create("io.github.wrongch.restkit.restItemDetail");
 
     RestItemDetail createRestItemDetail();
 }

@@ -2,7 +2,7 @@
 
 ## Powerful toolkit for restful services development.
 
-[简体中文](./README.zh_CN.md) | [Github](https://github.com/newhoo/RESTKit) | [Gitee](https://gitee.com/newhoo/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[简体中文](./README.zh_CN.md) | [Github](https://github.com/wrongch/RESTKit) | [Gitee](https://gitee.com/wrongch/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 This plugin is committed to enhancing development efficiency with useful features. From the initial RestfulToolkit and joined common functions of Postman, rich and complete features can greatly improve the efficiency of IDEA development. Former name: RESTKit.
 
@@ -33,11 +33,11 @@ This plugin is committed to enhancing development efficiency with useful feature
 
 - Scanning Type
   - [x] Spring MVC: supported by default. Support Java and Kotlin implement.
-  - [x] Jax-Rs: supported by plugin. See [RESTKit-JAX-RS](https://github.com/newhoo/RESTKit-JAX-RS)
-  - [x] Dubbo: supported by plugin. See [RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo). Support scanning and sending dubbo request.
-  - [x] Solon: supported by plugin. See [RestfulBox-Solon](https://github.com/newhoo/RestfulBox-Solon). Support scanning and sending http request.
+  - [x] Jax-Rs: supported by plugin. See [RESTKit-JAX-RS](https://github.com/wrongch/RESTKit-JAX-RS)
+  - [x] Dubbo: supported by plugin. See [RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo). Support scanning and sending dubbo request.
+  - [x] Solon: supported by plugin. See [RestfulBox-Solon](https://github.com/wrongch/RestfulBox-Solon). Support scanning and sending http request.
 - Storage Type (Suggest using datasource instead)
-  - [x] Redis: supported by plugin. See [RESTKit-Redis](https://github.com/newhoo/RESTKit-Redis). Support store services to redis and sending simple redis command.
+  - [x] Redis: supported by plugin. See [RESTKit-Redis](https://github.com/wrongch/RESTKit-Redis). Support store services to redis and sending simple redis command.
   - [x] Local Store: supported by default. Support store services to local file.
 - Protocol
   - [x] HTTP/HTTPS: supported by default.
@@ -52,7 +52,7 @@ This plugin is committed to enhancing development efficiency with useful feature
 _Due to limited time, Chinese documents are more comprehensive. Please visit as needed._
 
 - [English Document](doc/en/README.md)
-- [中文文档-Github](https://github.com/newhoo/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)  [Gitee](https://gitee.com/newhoo/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)
+- [中文文档-Github](https://github.com/wrongch/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)  [Gitee](https://gitee.com/wrongch/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)
 - [CHANGELOG](doc/CHANGELOG.md)
 
 ## Contact & Feedback
@@ -60,7 +60,7 @@ If you find any problems with this plugin, please give me feedback. If it helps,
 
 :fire: _If you want to experience the subscription feature more fully, i will provide 3 months of free use at a time. If you need, provide your [jetbrains account](https://account.jetbrains.com/profile-details) to me by email!_
 
-[Issues](https://github.com/newhoo/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[Issues](https://github.com/wrongch/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 > Note  
 > Please provide necessary information when you feedback: IDEA version, plugin version, exception content, recreation way, desire, and etc.

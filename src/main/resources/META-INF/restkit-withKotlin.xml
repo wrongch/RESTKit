@@ -1,7 +1,7 @@
 <idea-plugin>
 
-    <extensions defaultExtensionNs="io.github.newhoo.restkit">
-        <languageResolver implementation="io.github.newhoo.restkit.feature.javaimpl.language.KotlinLanguageResolver$KotlinLanguageResolverProvider"/>
+    <extensions defaultExtensionNs="io.github.wrongch.restkit">
+        <languageResolver implementation="io.github.wrongch.restkit.feature.javaimpl.language.KotlinLanguageResolver$KotlinLanguageResolverProvider"/>
     </extensions>
 
 </idea-plugin>

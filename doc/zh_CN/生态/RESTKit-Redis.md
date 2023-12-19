@@ -2,7 +2,7 @@
 
 **RESTKit-Redis** 是[RESTKit](https://plugins.jetbrains.com/plugin/14723-restkit) 的辅助插件，用于通过`RestfulBox`提供Redis支持，支持存储API到redis和简单的redis命令发送。
 
-[GitHub](https://github.com/newhoo/RESTKit-Redis)｜[Jetbrains](https://plugins.jetbrains.com/plugin/18869-restkit-redis)
+[GitHub](https://github.com/wrongch/RESTKit-Redis)｜[Jetbrains](https://plugins.jetbrains.com/plugin/18869-restkit-redis)
 
 ## 安装
 

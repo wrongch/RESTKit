@@ -3,7 +3,7 @@
 ## 一套功能强大的 Restful 服务开发辅助工具集
 
 
-[英文](./README.md) | [Github](https://github.com/newhoo/RESTKit) | [Gitee](https://gitee.com/newhoo/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[英文](./README.md) | [Github](https://github.com/wrongch/RESTKit) | [Gitee](https://gitee.com/wrongch/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 **RestfulBox**插件致力于提升开发效率，只有实用常用的功能。源于最初版本的RestfulToolkit，同时融入了Postman的常用功能，丰富且完善的功能能极大地提高了Idea开发的效率。曾用名：RESTKit。
 
@@ -35,10 +35,10 @@
 - 扫描类型
   - [x] Spring MVC：默认支持，支持Java and Kotlin实现
   - [x] Jax-Rs：通过插件支持，见 [RESTKit-JAX-RS](https://github.com/huzunrong/RESTKit-JAX-RS)
-  - [x] Dubbo：通过插件支持，见 [RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo) ，支持扫描和发送请求
-  - [x] Solon：通过插件支持，见 [RestfulBox-Solon](https://github.com/newhoo/RestfulBox-Solon) ，支持扫描和请求发送
+  - [x] Dubbo：通过插件支持，见 [RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo) ，支持扫描和发送请求
+  - [x] Solon：通过插件支持，见 [RestfulBox-Solon](https://github.com/wrongch/RestfulBox-Solon) ，支持扫描和请求发送
 - 存储类型（建议使用数据源）
-  - [x] Redis：通过插件支持，见 [RESTKit-Redis](https://github.com/newhoo/RESTKit-Redis) ，支持存储API到redis和简单的redis命令发送
+  - [x] Redis：通过插件支持，见 [RESTKit-Redis](https://github.com/wrongch/RESTKit-Redis) ，支持存储API到redis和简单的redis命令发送
   - [x] Local Store：默认支持，支持存储API到本地文件
 - 协议类型
   - [x] HTTP/HTTPS：默认支持
@@ -49,7 +49,7 @@
   - [x] MySQL数据源：默认3.0.1开始支持
 
 ## 使用文档
-- [中文文档-Github](https://github.com/newhoo/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)  [Gitee](https://gitee.com/newhoo/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)
+- [中文文档-Github](https://github.com/wrongch/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)  [Gitee](https://gitee.com/wrongch/RESTKit/blob/main/doc/zh_CN/%E7%9B%AE%E5%BD%95.md)
 - [English Document](doc/en/README.md)
 - [CHANGELOG](doc/CHANGELOG.md)
 
@@ -60,7 +60,7 @@
 
 :fire: **_如果你想更加充分地体验订阅功能，作者免费赠送3个月使用。如有需要，可通过邮件联系作者，备注好需求和你的 [Jetbrains邮箱账号](https://account.jetbrains.com/profile-details) !!_**
 
-[Issues](https://github.com/newhoo/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Jetbrains评分](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[Issues](https://github.com/wrongch/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Jetbrains评分](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 > 注意  
 > 反馈时请务必附上必要信息：Idea版本、插件版本、异常内容、复现方式、诉求等。

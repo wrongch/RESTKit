@@ -1,0 +1,24 @@
+package io.github.wrongch.restkit.toolwindow.action.toolbar;
+
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.project.Project;
+import io.github.wrongch.restkit.toolwindow.RestToolWindowFactory;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * ExpandAllAction
+ */
+public class ExpandAllAction extends AnAction {
+
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+        Project project = e.getProject();
+        if (project == null) {
+            return;
+        }
+        RestToolWindowFactory.getRestServiceToolWindow(project, toolWindow -> {
+            toolWindow.expandAll(true);
+        });
+    }
+}

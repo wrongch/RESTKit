@@ -2,7 +2,7 @@
 
 ## Powerful toolkit for restful services development.
 
-[Github](https://github.com/newhoo/RESTKit) | [Gitee](https://gitee.com/newhoo/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[Github](https://github.com/wrongch/RESTKit) | [Gitee](https://gitee.com/wrongch/RESTKit) | [Jetbrains](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 This plugin is committed to enhancing development efficiency with useful features. From the initial RestfulToolkit and joined common functions of Postman, rich and complete features can greatly improve the efficiency of IDEA development. Former name: RESTKit.
 
@@ -31,9 +31,9 @@ This plugin is committed to enhancing development efficiency with useful feature
 ## Ecology
 
 - [x] Spring MVC: supported by default. Support Java and Kotlin implement.
-- [x] Jax-Rs: supported by plugin. See [RESTKit-JAX-RS](https://github.com/newhoo/RESTKit-JAX-RS)
-- [x] Dubbo: supported by plugin. See [RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo). Support scanning and sending request.
-- [x] Redis: supported by plugin. See [RESTKit-Redis](https://github.com/newhoo/RESTKit-Redis). Support store services to redis and sending simple redis command.
+- [x] Jax-Rs: supported by plugin. See [RESTKit-JAX-RS](https://github.com/wrongch/RESTKit-JAX-RS)
+- [x] Dubbo: supported by plugin. See [RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo). Support scanning and sending request.
+- [x] Redis: supported by plugin. See [RESTKit-Redis](https://github.com/wrongch/RESTKit-Redis). Support store services to redis and sending simple redis command.
 - [x] Local Store: supported by default. Support store services to local file.
 - [x] Sqlite Datasource: supported by default. Support store all data to sqlite.
 - [x] MySQL Datasource: supported from 3.0.1. Support store all data to MySQL.
@@ -365,9 +365,9 @@ if (statusCode != 200) {
 ### Plugin Extension
 RESTKit provided extension points from version `2.0.1`. It's very useful.
 
-- `io.github.newhoo.restkit.restful.ep.RestfulResolverProvider` you can scan restful apis for other framework.
-- `io.github.newhoo.restkit.restful.ep.LanguageResolverProvider` operation for special language
-- `io.github.newhoo.restkit.restful.ep.RestClientProvider` support custom request protocol from `2.0.3`.
+- `io.github.wrongch.restkit.restful.ep.RestfulResolverProvider` you can scan restful apis for other framework.
+- `io.github.wrongch.restkit.restful.ep.LanguageResolverProvider` operation for special language
+- `io.github.wrongch.restkit.restful.ep.RestClientProvider` support custom request protocol from `2.0.3`.
 
 For example: 
 
@@ -375,14 +375,14 @@ For example:
 ```xml
 <idea-plugin>
     ...
-    <depends>io.github.newhoo.restkit</depends>
+    <depends>io.github.wrongch.restkit</depends>
 
-    <extensions defaultExtensionNs="io.github.newhoo.restkit">
+    <extensions defaultExtensionNs="io.github.wrongch.restkit">
         <!-- your restful resolver implementation -->
-        <restfulResolver implementation="io.github.newhoo.restkit.feature.javaimpl.spring.SpringRequestResolver$SpringRequestResolverProvider"/>
-        <languageResolver implementation="io.github.newhoo.restkit.feature.javaimpl.language.JavaLanguageResolver$JavaLanguageResolverProvider"/>
+        <restfulResolver implementation="io.github.wrongch.restkit.feature.javaimpl.spring.SpringRequestResolver$SpringRequestResolverProvider"/>
+        <languageResolver implementation="io.github.wrongch.restkit.feature.javaimpl.language.JavaLanguageResolver$JavaLanguageResolverProvider"/>
       
-        <restfulResolver implementation="io.github.newhoo.restkit.ext.jaxrs.JaxrsResolverProvider"/>
+        <restfulResolver implementation="io.github.wrongch.restkit.ext.jaxrs.JaxrsResolverProvider"/>
     </extensions>
 </idea-plugin>
 ```
@@ -421,7 +421,7 @@ public class JavaLanguageResolver implements LanguageResolver {
 }
 ```
 
-For complete examples, please see source code and [RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo)
+For complete examples, please see source code and [RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo)
 
 
 ### Other Usages
@@ -456,7 +456,7 @@ If you find any problems with this plugin, please give me feedback. If it helps,
 
 :fire: **_If you want to experience the subscription feature more fully, i will provide 3 months of free use at a time. If you need, provide your [jetbrains account](https://account.jetbrains.com/profile-details) to me by email!_**
 
-[Issues](https://github.com/newhoo/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[Issues](https://github.com/wrongch/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 > Note  
 > Please provide necessary information when you feedback: IDEA version, plugin version, exception content, recreation way(if can), desire, and etc.

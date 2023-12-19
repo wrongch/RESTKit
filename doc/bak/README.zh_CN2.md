@@ -3,7 +3,7 @@
 ## 一套功能强大的 Restful 服务开发辅助工具集
 
 
-[英文](./README.md) | [Gitee](https://gitee.com/newhoo/RESTKit) | [语雀](https://www.yuque.com/newhoo/restkit)
+[英文](./README.md) | [Gitee](https://gitee.com/wrongch/RESTKit) | [语雀](https://www.yuque.com/wrongch/restkit)
 
 本插件致力于提升开发效率之作，只有实用常用的功能。源于最初版本的RestfulToolkit，同时加入Postman的常用功能，丰富且完善的功能能极大地提高Idea开发的效率。免费分享给大家使用，不用于商业用途。如有使用问题，请反馈于我。
 
@@ -32,9 +32,9 @@
 ## 生态
 - Local Store：默认支持，支持存储API到本地文件
 - Spring MVC：默认支持，支持Java and Kotlin实现
-- Jax-Rs：通过插件支持，见 [RESTKit-JAX-RS](https://github.com/newhoo/RESTKit-JAX-RS)
-- Dubbo：通过插件支持，见 [RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo) ，支持扫描和请求发送
-- Redis：通过插件支持，见 [RESTKit-Redis](https://github.com/newhoo/RESTKit-Redis) ，支持存储API到redis和简单的redis命令发送
+- Jax-Rs：通过插件支持，见 [RESTKit-JAX-RS](https://github.com/wrongch/RESTKit-JAX-RS)
+- Dubbo：通过插件支持，见 [RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo) ，支持扫描和请求发送
+- Redis：通过插件支持，见 [RESTKit-Redis](https://github.com/wrongch/RESTKit-Redis) ，支持存储API到redis和简单的redis命令发送
 - grpc：todo，计划通过插件支持
 
 
@@ -360,9 +360,9 @@ if (statusCode != 200) {
 
 ### 插件扩展
 RESTKit从`2.0.1`版本开始提供了扩展点:
-- `io.github.newhoo.restkit.restful.ep.RestfulResolverProvider` 自定义扫描restful接口。
-- `io.github.newhoo.restkit.restful.ep.LanguageResolverProvider` 自定义语言相关的操作，具体参考源码说明。
-- `io.github.newhoo.restkit.restful.ep.RestClientProvider` 自定义请求协议，从`2.0.3`开始支持。
+- `io.github.wrongch.restkit.restful.ep.RestfulResolverProvider` 自定义扫描restful接口。
+- `io.github.wrongch.restkit.restful.ep.LanguageResolverProvider` 自定义语言相关的操作，具体参考源码说明。
+- `io.github.wrongch.restkit.restful.ep.RestClientProvider` 自定义请求协议，从`2.0.3`开始支持。
 
 使用示例：
 
@@ -370,14 +370,14 @@ RESTKit从`2.0.1`版本开始提供了扩展点:
 ```xml
 <idea-plugin>
     ...
-    <depends>io.github.newhoo.restkit</depends>
+    <depends>io.github.wrongch.restkit</depends>
 
-    <extensions defaultExtensionNs="io.github.newhoo.restkit">
+    <extensions defaultExtensionNs="io.github.wrongch.restkit">
         <!-- your restful resolver implementation -->
-        <restfulResolver implementation="io.github.newhoo.restkit.feature.javaimpl.spring.SpringRequestResolver$SpringRequestResolverProvider"/>
-        <languageResolver implementation="io.github.newhoo.restkit.feature.javaimpl.language.JavaLanguageResolver$JavaLanguageResolverProvider"/>
+        <restfulResolver implementation="io.github.wrongch.restkit.feature.javaimpl.spring.SpringRequestResolver$SpringRequestResolverProvider"/>
+        <languageResolver implementation="io.github.wrongch.restkit.feature.javaimpl.language.JavaLanguageResolver$JavaLanguageResolverProvider"/>
         
-        <restfulResolver implementation="io.github.newhoo.restkit.ext.jaxrs.JaxrsResolverProvider"/>
+        <restfulResolver implementation="io.github.wrongch.restkit.ext.jaxrs.JaxrsResolverProvider"/>
     </extensions>
 </idea-plugin>
 ```
@@ -416,7 +416,7 @@ public class JavaLanguageResolver implements LanguageResolver {
 }
 ```
 
-完整示例请参阅：源码和[RESTKit-Dubbo](https://github.com/newhoo/RESTKit-Dubbo)
+完整示例请参阅：源码和[RESTKit-Dubbo](https://github.com/wrongch/RESTKit-Dubbo)
 
 
 ### 其他使用
@@ -448,7 +448,7 @@ Url navigate to service tree.
 
 
 ## 联系 & 反馈
-[Issues](https://github.com/newhoo/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
+[Issues](https://github.com/wrongch/RESTKit/issues) | [Email](mailto:huzunrong@foxmail.com) | [Ratings & Previews](https://plugins.jetbrains.com/plugin/14723-restkit/reviews)
 
 > 注意  
 > 反馈时请务必附上必要信息：Idea版本、插件版本、异常内容、复现方式(如果有)、诉求等。
