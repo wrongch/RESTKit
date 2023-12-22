@@ -1,28 +1,22 @@
 <idea-plugin>
     <id>io.github.wrongch.restkit</id>
     <name>RESTKit</name>
-    <!--  <version>2.0.5</version>-->
     <vendor email="wrongch@gmail.com" url="https://github.com/wrongch/RESTKit">RESTKit</vendor>
 
     <description><![CDATA[
-    <p>Forked from https://github.com/wrongch/RESTKit</p>
-
+    <p>Code at<a href="https://github.com/wrongch/RESTKit">Github</a>(Forked from https://github.com/newhoo/RESTKit)</p>
     <p>一套功能强大的 Restful 服务开发辅助工具集</p>
-
     <ul>
         <li>Restful服务自动扫描、展示、跳转、导出和导入；</li>
         <li>强大好用的请求工具，支持多协议、环境变量、参数库和请求脚本；</li>
         <li>提供多个扩展点，用户可实现其他框架和协议的接口扫描及请求发送；</li>
         <li>idea默认支持Spring MVC(Java or Kotlin)；</li>
         <li>支持更多的jetbrains产品，不仅仅是idea，且默认支持保存接口；</li>
-    </ul>
-
-    <a href="https://github.com/wrongch/RESTKit">Github</a>
-    <br/>
+    </ul>    
     ]]></description>
 
     <change-notes><![CDATA[
-        3.3.0
+        <p>v3.3.0</p>
         <ul>
             <li>支持Idea2023.3</li>
             <li>支持FeignClient</li>
@@ -30,16 +24,21 @@
     ]]>
     </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <!-- please see
+    http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for
+    description -->
     <!--    until-build="202.*"-->
-    <idea-version since-build="233.0"/>
+    <idea-version since-build="233.0" />
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html on how to target different products -->
+    <!-- please see
+    http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html on
+    how to target different products -->
     <!-- uncomment to enable plugin in all products -->
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="restkit-withJava.xml">com.intellij.modules.java</depends>
     <depends optional="true" config-file="restkit-withKotlin.xml">org.jetbrains.kotlin</depends>
-    <depends optional="true" config-file="restkit-withMicroservices.xml">com.intellij.modules.microservices</depends>
+    <depends optional="true" config-file="restkit-withMicroservices.xml">
+        com.intellij.modules.microservices</depends>
 
     <project-components>
         <!-- Add your project components here, better not use. -->
@@ -52,109 +51,168 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <toolWindow id="RESTKit" factoryClass="io.github.wrongch.restkit.toolwindow.RestToolWindowFactory" anchor="right" icon="/icons/service.png" secondary="false"/>
-        <postStartupActivity implementation="io.github.wrongch.restkit.MyStartupActivity"/>
-        <applicationService serviceImplementation="io.github.wrongch.restkit.config.certificate.CertificateComponent"/>
-        <projectService serviceImplementation="io.github.wrongch.restkit.config.EnvironmentComponent"/>
-        <projectService serviceImplementation="io.github.wrongch.restkit.config.CommonSettingComponent"/>
-        <projectService serviceImplementation="io.github.wrongch.restkit.config.HttpSettingComponent"/>
-        <projectService serviceImplementation="io.github.wrongch.restkit.config.ParameterLibrary"/>
-        <projectService serviceImplementation="io.github.wrongch.restkit.config.HttpMethodFilterConfiguration"/>
-        <projectConfigurable id="RESTKit.SettingConfigurable" instance="io.github.wrongch.restkit.config.SettingConfigurable" displayName="RESTKit">
-            <configurable instance="io.github.wrongch.restkit.config.HttpSettingConfigurable" displayName="HTTP"/>
-            <configurable instance="io.github.wrongch.restkit.config.EnvironmentConfigurable" displayName="Environment"/>
-            <configurable instance="io.github.wrongch.restkit.config.certificate.CertificateConfigurable" displayName="Certificate"/>
+        <toolWindow id="RESTKit"
+            factoryClass="io.github.wrongch.restkit.toolwindow.RestToolWindowFactory" anchor="right"
+            icon="/icons/service.png" secondary="false" />
+        <postStartupActivity implementation="io.github.wrongch.restkit.MyStartupActivity" />
+        <applicationService
+            serviceImplementation="io.github.wrongch.restkit.config.certificate.CertificateComponent" />
+        <projectService
+            serviceImplementation="io.github.wrongch.restkit.config.EnvironmentComponent" />
+        <projectService
+            serviceImplementation="io.github.wrongch.restkit.config.CommonSettingComponent" />
+        <projectService
+            serviceImplementation="io.github.wrongch.restkit.config.HttpSettingComponent" />
+        <projectService serviceImplementation="io.github.wrongch.restkit.config.ParameterLibrary" />
+        <projectService
+            serviceImplementation="io.github.wrongch.restkit.config.HttpMethodFilterConfiguration" />
+        <projectConfigurable id="RESTKit.SettingConfigurable"
+            instance="io.github.wrongch.restkit.config.SettingConfigurable" displayName="RESTKit">
+            <configurable instance="io.github.wrongch.restkit.config.HttpSettingConfigurable"
+                displayName="HTTP" />
+            <configurable instance="io.github.wrongch.restkit.config.EnvironmentConfigurable"
+                displayName="Environment" />
+            <configurable
+                instance="io.github.wrongch.restkit.config.certificate.CertificateConfigurable"
+                displayName="Certificate" />
         </projectConfigurable>
-        <searchEverywhereContributor implementation="io.github.wrongch.restkit.navigation.RestSearchEverywhereContributor$Factory"/>
+        <searchEverywhereContributor
+            implementation="io.github.wrongch.restkit.navigation.RestSearchEverywhereContributor$Factory" />
         <!-- 有些多余了 -->
         <!-- <intentionAction> -->
         <!--     <className>io.github.wrongch.restkit.intention.JumpToTreeIntention</className> -->
         <!-- </intentionAction> -->
-        <iw.actionProvider implementation="io.github.wrongch.restkit.parameter.library.ParameterLibraryActionProvider"/>
+        <iw.actionProvider
+            implementation="io.github.wrongch.restkit.parameter.library.ParameterLibraryActionProvider" />
         <!-- 在编辑器添加悬浮按钮 -->
-        <!-- <editorFloatingToolbarProvider id="MyDefaultFloatingToolbarProvider" implementation="com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider"/> -->
-        <notificationGroup id="RESTKit.balloonGroup" displayType="BALLOON"/>
+        <!-- <editorFloatingToolbarProvider id="MyDefaultFloatingToolbarProvider"
+        implementation="com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider"/> -->
+        <notificationGroup id="RESTKit.balloonGroup" displayType="BALLOON" />
     </extensions>
 
     <extensionPoints>
-        <extensionPoint name="restfulResolver" interface="io.github.wrongch.restkit.restful.ep.RestfulResolverProvider" dynamic="true"/>
-        <extensionPoint name="languageResolver" interface="io.github.wrongch.restkit.restful.ep.LanguageResolverProvider" dynamic="true"/>
-        <extensionPoint name="restClient" interface="io.github.wrongch.restkit.restful.ep.RestClientProvider" dynamic="true"/>
+        <extensionPoint name="restfulResolver"
+            interface="io.github.wrongch.restkit.restful.ep.RestfulResolverProvider" dynamic="true" />
+        <extensionPoint name="languageResolver"
+            interface="io.github.wrongch.restkit.restful.ep.LanguageResolverProvider" dynamic="true" />
+        <extensionPoint name="restClient"
+            interface="io.github.wrongch.restkit.restful.ep.RestClientProvider" dynamic="true" />
     </extensionPoints>
 
     <extensions defaultExtensionNs="io.github.wrongch.restkit">
-        <restfulResolver implementation="io.github.wrongch.restkit.restful.local.LocalRequestResolver$FileResolverProvider"/>
-        <restClient implementation="io.github.wrongch.restkit.restful.http.HttpClient$HttpClientProvider"/>
+        <restfulResolver
+            implementation="io.github.wrongch.restkit.restful.local.LocalRequestResolver$FileResolverProvider" />
+        <restClient
+            implementation="io.github.wrongch.restkit.restful.http.HttpClient$HttpClientProvider" />
     </extensions>
 
     <actions>
         <!-- Main editor popup menu / 右键菜单 -->
         <group id="RESTKit.EditorPopupMenu.Group" text="_Restful Tool" popup="false">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <action id="RESTKit.ConvertClassToJSONAction" class="io.github.wrongch.restkit.action.ConvertClassToJSONAction"
-                    text="Convert to JSON" description="Convert to JSON">
+            <add-to-group group-id="EditorPopupMenu" anchor="first" />
+            <action id="RESTKit.ConvertClassToJSONAction"
+                class="io.github.wrongch.restkit.action.ConvertClassToJSONAction"
+                text="Convert to JSON" description="Convert to JSON">
             </action>
         </group>
 
         <!-- search everywhere -->
-        <action id="RESTKit.MyRestUrlSearchEverywhereAction" class="io.github.wrongch.restkit.navigation.RestSearchEverywhereAction"
-                text="Search URLs"
-                icon="AllIcons.Actions.Find">
-            <keyboard-shortcut keymap="$default" first-keystroke="control BACK_SLASH"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="control alt N"/>
+        <action id="RESTKit.MyRestUrlSearchEverywhereAction"
+            class="io.github.wrongch.restkit.navigation.RestSearchEverywhereAction"
+            text="Search URLs"
+            icon="AllIcons.Actions.Find">
+            <keyboard-shortcut keymap="$default" first-keystroke="control BACK_SLASH" />
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt N" />
             <!-- <add-to-group group-id="GoToTargetEx"/> -->
         </action>
 
         <!-- Tools menu -->
         <group id="RESTKit.ToolsMenuGroup" text="_RESTKit" popup="true" icon="/icons/service.png">
-            <add-to-group group-id="ToolsMenu"/>
-            <action id="RESTKit.OpenRequestLogAction" class="io.github.wrongch.restkit.action.OpenRequestLogAction" text="Open Request Log"/>
-            <action id="RESTKit.OpenPreScriptAction" class="io.github.wrongch.restkit.action.OpenPreScriptAction" text="Open PreScript"/>
-            <action id="RESTKit.OpenPostScriptAction" class="io.github.wrongch.restkit.action.OpenPostScriptAction" text="Open PostScript"/>
-            <action id="RESTKit.OpenLocalApiFileAction" class="io.github.wrongch.restkit.action.OpenLocalApiFileAction" text="Open Local Api File"/>
-            <action id="RESTKit.ViewDocument" class="io.github.wrongch.restkit.action.ViewDocumentAction" text="View Document"/>
+            <add-to-group group-id="ToolsMenu" />
+            <action id="RESTKit.OpenRequestLogAction"
+                class="io.github.wrongch.restkit.action.OpenRequestLogAction"
+                text="Open Request Log" />
+            <action id="RESTKit.OpenPreScriptAction"
+                class="io.github.wrongch.restkit.action.OpenPreScriptAction" text="Open PreScript" />
+            <action id="RESTKit.OpenPostScriptAction"
+                class="io.github.wrongch.restkit.action.OpenPostScriptAction" text="Open PostScript" />
+            <action id="RESTKit.OpenLocalApiFileAction"
+                class="io.github.wrongch.restkit.action.OpenLocalApiFileAction"
+                text="Open Local Api File" />
+            <action id="RESTKit.ViewDocument"
+                class="io.github.wrongch.restkit.action.ViewDocumentAction" text="View Document" />
         </group>
 
         <!-- ToolWindow toolbar menu -->
         <group id="RESTKit.NavigatorActionsToolbar">
-            <action id="RESTKit.RefreshServices" class="io.github.wrongch.restkit.toolwindow.action.toolbar.RefreshProjectAction" text="Refresh URL List" icon="AllIcons.Actions.Refresh"/>
-            <separator/>
-            <reference id="RESTKit.MyRestUrlSearchEverywhereAction"/>
-            <action id="RESTKit.MethodFilterAction" class="io.github.wrongch.restkit.toolwindow.action.toolbar.HttpMethodFilterAction" text="Method Filter" icon="AllIcons.General.Filter"/>
-            <action id="RESTKit.EnableLibraryAction" class="io.github.wrongch.restkit.toolwindow.action.toolbar.EnableLibraryAction" text="Enable Library Scanning" icon="AllIcons.ObjectBrowser.ShowLibraryContents"/>
-            <separator/>
-            <action id="RESTKit.ExpandAllAction" class="io.github.wrongch.restkit.toolwindow.action.toolbar.ExpandAllAction" text="Expand All" icon="AllIcons.Actions.Expandall"/>
-            <action id="RESTKit.CollapseAllAction" class="io.github.wrongch.restkit.toolwindow.action.toolbar.CollapseAllAction" text="Collapse All" icon="AllIcons.Actions.Collapseall"/>
-            <separator/>
-            <group id="RESTKit.ShowToolsMenu.Group" text="_Show Tools" icon="AllIcons.Toolwindows.ToolWindowStructure" popup="true">
-                <reference id="RESTKit.OpenRequestLogAction"/>
-                <reference id="RESTKit.OpenPreScriptAction"/>
-                <reference id="RESTKit.OpenPostScriptAction"/>
-                <reference id="RESTKit.OpenLocalApiFileAction"/>
+            <action id="RESTKit.RefreshServices"
+                class="io.github.wrongch.restkit.toolwindow.action.toolbar.RefreshProjectAction"
+                text="Refresh URL List" icon="AllIcons.Actions.Refresh" />
+            <separator />
+            <reference id="RESTKit.MyRestUrlSearchEverywhereAction" />
+            <action id="RESTKit.MethodFilterAction"
+                class="io.github.wrongch.restkit.toolwindow.action.toolbar.HttpMethodFilterAction"
+                text="Method Filter" icon="AllIcons.General.Filter" />
+            <action id="RESTKit.EnableLibraryAction"
+                class="io.github.wrongch.restkit.toolwindow.action.toolbar.EnableLibraryAction"
+                text="Enable Library Scanning" icon="AllIcons.ObjectBrowser.ShowLibraryContents" />
+            <separator />
+            <action id="RESTKit.ExpandAllAction"
+                class="io.github.wrongch.restkit.toolwindow.action.toolbar.ExpandAllAction"
+                text="Expand All" icon="AllIcons.Actions.Expandall" />
+            <action id="RESTKit.CollapseAllAction"
+                class="io.github.wrongch.restkit.toolwindow.action.toolbar.CollapseAllAction"
+                text="Collapse All" icon="AllIcons.Actions.Collapseall" />
+            <separator />
+            <group id="RESTKit.ShowToolsMenu.Group" text="_Show Tools"
+                icon="AllIcons.Toolwindows.ToolWindowStructure" popup="true">
+                <reference id="RESTKit.OpenRequestLogAction" />
+                <reference id="RESTKit.OpenPreScriptAction" />
+                <reference id="RESTKit.OpenPostScriptAction" />
+                <reference id="RESTKit.OpenLocalApiFileAction" />
             </group>
-            <group id="RESTKit.ShowSetting.Group" text="_Show Settings" icon="AllIcons.General.Settings" popup="true">
-                <action id="RESTKit.ShowCommonSetting" class="io.github.wrongch.restkit.toolwindow.action.toolbar.ShowCommonSettingAction" text="Common Setting"/>
-                <action id="RESTKit.ShowEnvironmentSetting" class="io.github.wrongch.restkit.toolwindow.action.toolbar.ShowEnvironmentSettingAction" text="Environment Setting"/>
+            <group id="RESTKit.ShowSetting.Group" text="_Show Settings"
+                icon="AllIcons.General.Settings" popup="true">
+                <action id="RESTKit.ShowCommonSetting"
+                    class="io.github.wrongch.restkit.toolwindow.action.toolbar.ShowCommonSettingAction"
+                    text="Common Setting" />
+                <action id="RESTKit.ShowEnvironmentSetting"
+                    class="io.github.wrongch.restkit.toolwindow.action.toolbar.ShowEnvironmentSettingAction"
+                    text="Environment Setting" />
             </group>
-            <reference id="RESTKit.ViewDocument"/>
+            <reference id="RESTKit.ViewDocument" />
         </group>
 
         <!-- Tree element popup menu-->
         <group id="RESTKit.NavigatorRootMenu">
-            <action id="Menu.LocalApiImportAction" class="io.github.wrongch.restkit.toolwindow.action.item.ImportApiAction" text="Import"/>
-            <action id="Menu.LocalApiExportAction" class="io.github.wrongch.restkit.toolwindow.action.item.ExportApiAction" text="Export"/>
+            <action id="Menu.LocalApiImportAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.ImportApiAction"
+                text="Import" />
+            <action id="Menu.LocalApiExportAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.ExportApiAction"
+                text="Export" />
         </group>
         <group id="RESTKit.NavigatorModuleMenu">
-            <action id="Menu.LocalApiRenameModuleAction" class="io.github.wrongch.restkit.toolwindow.action.item.RenameModuleAction" text="Rename"/>
-            <action id="Menu.LocalApiDeleteModuleAction" class="io.github.wrongch.restkit.toolwindow.action.item.DeleteModuleAction" text="Delete"/>
-            <reference id="Menu.LocalApiExportAction"/>
+            <action id="Menu.LocalApiRenameModuleAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.RenameModuleAction"
+                text="Rename" />
+            <action id="Menu.LocalApiDeleteModuleAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.DeleteModuleAction"
+                text="Delete" />
+            <reference id="Menu.LocalApiExportAction" />
         </group>
         <group id="RESTKit.NavigatorServiceMenu">
-            <action id="Menu.EditSourceAction" class="io.github.wrongch.restkit.toolwindow.action.NavigateToSourceAction" text="Jump to Source"/>
-            <action id="Menu.CopyUrlAction" class="io.github.wrongch.restkit.toolwindow.action.CopyUrlAction" text="Copy URL"/>
-            <action id="Menu.MoveApiAction" class="io.github.wrongch.restkit.toolwindow.action.item.MoveApiAction" text="Move"/>
-            <action id="Menu.DelLocalApiAction" class="io.github.wrongch.restkit.toolwindow.action.item.DeleteApiAction" text="Delete"/>
-            <reference id="Menu.LocalApiExportAction"/>
+            <action id="Menu.EditSourceAction"
+                class="io.github.wrongch.restkit.toolwindow.action.NavigateToSourceAction"
+                text="Jump to Source" />
+            <action id="Menu.CopyUrlAction"
+                class="io.github.wrongch.restkit.toolwindow.action.CopyUrlAction" text="Copy URL" />
+            <action id="Menu.MoveApiAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.MoveApiAction" text="Move" />
+            <action id="Menu.DelLocalApiAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.DeleteApiAction"
+                text="Delete" />
+            <reference id="Menu.LocalApiExportAction" />
             <!-- <separator/> -->
         </group>
 
@@ -169,29 +227,37 @@
             </action>
             <separator/>
             -->
-            <action id="Menu.SaveLocalApiAction" class="io.github.wrongch.restkit.toolwindow.action.item.SaveApiAction" text="Save Api" icon="AllIcons.Actions.MenuSaveall"/>
-            <action id="Menu.CopyCurlAction" class="io.github.wrongch.restkit.toolwindow.action.CopyCurlAction" text="Copy as Curl" icon="AllIcons.Actions.Copy"/>
-            <reference id="BasicEditorPopupMenu"/>
+            <action id="Menu.SaveLocalApiAction"
+                class="io.github.wrongch.restkit.toolwindow.action.item.SaveApiAction"
+                text="Save Api" icon="AllIcons.Actions.MenuSaveall" />
+            <action id="Menu.CopyCurlAction"
+                class="io.github.wrongch.restkit.toolwindow.action.CopyCurlAction"
+                text="Copy as Curl" icon="AllIcons.Actions.Copy" />
+            <reference id="BasicEditorPopupMenu" />
         </group>
         <group id="RESTKit.EditorContextMenu.ConfigTab">
-            <reference id="Menu.SaveLocalApiAction"/>
-            <reference id="Menu.CopyCurlAction"/>
-            <reference id="BasicEditorPopupMenu"/>
+            <reference id="Menu.SaveLocalApiAction" />
+            <reference id="Menu.CopyCurlAction" />
+            <reference id="BasicEditorPopupMenu" />
         </group>
         <group id="RESTKit.EditorContextMenu.HeadersTab">
-            <reference id="RESTKit.EditorContextMenu"/>
+            <reference id="RESTKit.EditorContextMenu" />
         </group>
         <group id="RESTKit.EditorContextMenu.ParamsTab">
-            <reference id="RESTKit.EditorContextMenu"/>
+            <reference id="RESTKit.EditorContextMenu" />
         </group>
         <group id="RESTKit.EditorContextMenu.BodyTab">
-            <reference id="RESTKit.EditorContextMenu"/>
+            <reference id="RESTKit.EditorContextMenu" />
         </group>
-        <action id="Menu.SelectUploadFileAction" class="io.github.wrongch.restkit.toolwindow.action.editor.SelectUploadFileAction" text="Select Upload File" icon="AllIcons.Nodes.UpLevel">
-            <add-to-group group-id="EditorContextBarMenu" anchor="last"/>
+        <action id="Menu.SelectUploadFileAction"
+            class="io.github.wrongch.restkit.toolwindow.action.editor.SelectUploadFileAction"
+            text="Select Upload File" icon="AllIcons.Nodes.UpLevel">
+            <add-to-group group-id="EditorContextBarMenu" anchor="last" />
         </action>
-        <action id="Menu.ShowDownloadFileAction" class="io.github.wrongch.restkit.toolwindow.action.editor.ShowDownloadFileAction" text="Show File" icon="AllIcons.Actions.MenuOpen">
-            <add-to-group group-id="EditorContextBarMenu" anchor="last"/>
+        <action id="Menu.ShowDownloadFileAction"
+            class="io.github.wrongch.restkit.toolwindow.action.editor.ShowDownloadFileAction"
+            text="Show File" icon="AllIcons.Actions.MenuOpen">
+            <add-to-group group-id="EditorContextBarMenu" anchor="last" />
         </action>
     </actions>
 

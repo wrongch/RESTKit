@@ -64,9 +64,3 @@ If you find any problems with this plugin, please give me feedback. If it helps,
 
 > Note  
 > Please provide necessary information when you feedback: IDEA version, plugin version, exception content, recreation way, desire, and etc.
-
-
-## Sponsor
-You can take me a cup of coffee as you want. Thanks!
-
-![pay](doc/en/images/pay.png)
