@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.DumbAware;
@@ -12,6 +13,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class NavigateToSourceAction extends AnAction implements DumbAware {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {

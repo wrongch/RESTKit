@@ -1,6 +1,7 @@
 package io.github.wrongch.restkit.parameter.library;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -40,6 +41,10 @@ public class SaveParameterAction extends AnAction implements CustomComponentActi
         super(() -> "", () -> "Save parameter", AllIcons.Actions.MenuSaveall);
         this.editor = editor;
         this.parameterLibrary = parameterLibrary;
+    }
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
     }
 
     @Override

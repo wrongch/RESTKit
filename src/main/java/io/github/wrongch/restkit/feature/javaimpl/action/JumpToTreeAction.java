@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.feature.javaimpl.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -16,6 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 2.0.0
  */
 public class JumpToTreeAction extends AnAction {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {

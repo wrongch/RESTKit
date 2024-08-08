@@ -1,9 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action.editor;
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
@@ -33,6 +30,10 @@ import static io.github.wrongch.restkit.common.RestConstant.HTTP_FILE_PREFIX;
  */
 public class SelectUploadFileAction extends AnAction {
 
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
+
     @Override
     public void update(@NotNull AnActionEvent e) {
         Editor editor = e.getData(CommonDataKeys.EDITOR);
@@ -40,6 +41,7 @@ public class SelectUploadFileAction extends AnAction {
             e.getPresentation().setVisible(false);
             return;
         }
+
         String text = editor.getDocument().getText();
         if (StringUtils.isEmpty(text) || !text.contains(HTTP_FILE_PREFIX)) {
             e.getPresentation().setVisible(false);
@@ -72,12 +74,12 @@ public class SelectUploadFileAction extends AnAction {
         }
 
         final ListPopup popup = JBPopupFactory.getInstance()
-                                              .createActionGroupPopup(
-                                                      "Select File Parameter",
-                                                      new DefaultActionGroup(actions),
-                                                      e.getDataContext(),
-                                                      JBPopupFactory.ActionSelectionAid.SPEEDSEARCH,
-                                                      true);
+                .createActionGroupPopup(
+                        "Select File Parameter",
+                        new DefaultActionGroup(actions),
+                        e.getDataContext(),
+                        JBPopupFactory.ActionSelectionAid.SPEEDSEARCH,
+                        true);
         popup.showInBestPositionFor(e.getDataContext());
     }
 

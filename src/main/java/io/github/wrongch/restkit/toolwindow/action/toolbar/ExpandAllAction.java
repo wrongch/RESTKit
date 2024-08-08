@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action.toolbar;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
@@ -10,6 +11,10 @@ import org.jetbrains.annotations.NotNull;
  * ExpandAllAction
  */
 public class ExpandAllAction extends AnAction {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {

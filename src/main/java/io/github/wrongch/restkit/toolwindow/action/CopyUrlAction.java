@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -9,10 +10,15 @@ import io.github.wrongch.restkit.common.RestItem;
 import io.github.wrongch.restkit.util.IdeaUtils;
 import io.github.wrongch.restkit.util.NotifierUtils;
 import org.apache.commons.collections.CollectionUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class CopyUrlAction extends AnAction implements DumbAware {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void actionPerformed(AnActionEvent e) {

@@ -16,7 +16,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
-        <p>v3.3.0</p>
+        <p>v2024.8.8</p>
         <ul>
             <li>支持Idea2023.3</li>
             <li>支持FeignClient</li>

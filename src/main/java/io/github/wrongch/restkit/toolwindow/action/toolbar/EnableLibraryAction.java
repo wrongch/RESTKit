@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action.toolbar;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.Project;
@@ -12,6 +13,10 @@ import org.jetbrains.annotations.NotNull;
  * EnableLibraryAction
  */
 public class EnableLibraryAction extends ToggleAction {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {

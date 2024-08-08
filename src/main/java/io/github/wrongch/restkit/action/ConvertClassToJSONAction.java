@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -8,6 +9,7 @@ import com.intellij.psi.PsiElement;
 import io.github.wrongch.restkit.restful.LanguageHelper;
 import io.github.wrongch.restkit.util.NotifierUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.datatransfer.StringSelection;
 
@@ -16,12 +18,14 @@ import java.awt.datatransfer.StringSelection;
  */
 public class ConvertClassToJSONAction extends AnAction {
 
+   public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+   }
+
     @Override
     public void update(AnActionEvent e) {
         PsiElement psiElement = e.getData(CommonDataKeys.PSI_ELEMENT);
-        e.getPresentation().setEnabledAndVisible(psiElement != null
-                && LanguageHelper.canConvertToJSON(psiElement)
-        );
+        e.getPresentation().setEnabledAndVisible(psiElement != null && LanguageHelper.canConvertToJSON(psiElement));
     }
 
     @Override

@@ -33,19 +33,15 @@ public class CertificateTableModel extends ListTableModel<Certificate> {
 
         @Nullable
         @Override
+        @SuppressWarnings("unchecked")
         public Aspect valueOf(Certificate certificate) {
-            switch (getName()) {
-                case "Enable":
-                    return (Aspect) certificate.getEnable();
-                case "Host":
-                    return (Aspect) certificate.getHost();
-                case "PFX file":
-                    return (Aspect) certificate.getPfxFile();
-                case "Passphrase":
-                    return (Aspect) certificate.getPassphrase();
-                default:
-            }
-            return null;
+            return switch (getName()) {
+                case "Enable" -> (Aspect) certificate.getEnable();
+                case "Host" -> (Aspect) certificate.getHost();
+                case "PFX file" -> (Aspect) certificate.getPfxFile();
+                case "Passphrase" -> (Aspect) certificate.getPassphrase();
+                default -> null;
+            };
         }
 
         @Override

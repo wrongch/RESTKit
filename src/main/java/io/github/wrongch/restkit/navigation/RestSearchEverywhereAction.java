@@ -1,6 +1,7 @@
 package io.github.wrongch.restkit.navigation;
 
 import com.intellij.ide.actions.SearchEverywhereBaseAction;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,6 +12,11 @@ import org.jetbrains.annotations.NotNull;
  * @since 1.0.8
  */
 public class RestSearchEverywhereAction extends SearchEverywhereBaseAction {
+
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {

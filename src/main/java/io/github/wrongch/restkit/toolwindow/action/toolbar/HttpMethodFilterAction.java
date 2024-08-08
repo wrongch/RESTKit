@@ -3,11 +3,7 @@ package io.github.wrongch.restkit.toolwindow.action.toolbar;
 import com.intellij.execution.runners.ExecutionUtil;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.ElementsChooser;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.actionSystem.ToggleAction;
-import com.intellij.openapi.actionSystem.Toggleable;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
@@ -34,6 +30,10 @@ import java.util.Arrays;
  */
 public class HttpMethodFilterAction extends ToggleAction {
     private JBPopup myFilterPopup;
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {

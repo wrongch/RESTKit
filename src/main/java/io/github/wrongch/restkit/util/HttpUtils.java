@@ -111,7 +111,7 @@ public class HttpUtils {
             }
             String result = EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8);
             // unicode 转码
-            result = org.apache.commons.lang.StringEscapeUtils.unescapeJava(result);
+            result = org.apache.commons.text.StringEscapeUtils.unescapeJava(result);
 
             return new RequestInfo(req, new io.github.wrongch.restkit.restful.http.HttpResponse(response, result), hostAddress, (System.currentTimeMillis() - startTs));
         } catch (Exception e) {

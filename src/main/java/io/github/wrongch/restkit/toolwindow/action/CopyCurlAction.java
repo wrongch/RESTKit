@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.toolwindow.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -43,6 +44,10 @@ import static io.github.wrongch.restkit.common.RestConstant.PROTOCOL_HTTP;
  * @since 2.0.1
  */
 public class CopyCurlAction extends AnAction {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {

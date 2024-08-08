@@ -1,5 +1,6 @@
 package io.github.wrongch.restkit.action;
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.DumbAwareAction;
@@ -26,13 +27,20 @@ import static io.github.wrongch.restkit.common.RestConstant.WEB_FRAMEWORK_LOCAL;
  */
 public class OpenLocalApiFileAction extends DumbAwareAction {
 
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
+
     @Override
     public void update(@NotNull AnActionEvent e) {
         Project project = e.getProject();
         if (project == null) return;
 
         CommonSetting setting = CommonSettingComponent.getInstance(project).getState();
-        e.getPresentation().setEnabled(setting.getEnabledWebFrameworks().contains(WEB_FRAMEWORK_LOCAL) && StringUtils.isNotEmpty(setting.getApiFilePath()));
+        e.getPresentation().setEnabled(
+                setting.getEnabledWebFrameworks().contains(WEB_FRAMEWORK_LOCAL)
+                && StringUtils.isNotEmpty(setting.getApiFilePath())
+        );
     }
 
     @Override

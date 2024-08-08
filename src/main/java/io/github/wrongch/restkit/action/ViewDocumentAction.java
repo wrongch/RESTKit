@@ -2,11 +2,7 @@ package io.github.wrongch.restkit.action;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.BrowserUtil;
-import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.ListPopup;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +20,10 @@ public class ViewDocumentAction extends AnAction {
     private static final String GITHUB_URL = "https://github.com/wrongch/RESTKit";
     private static final String GITEE_URL = "https://gitee.com/wrongch/RESTKit";
     private static final String YUQUE_URL = "https://www.yuque.com/wrongch/restkit";
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {

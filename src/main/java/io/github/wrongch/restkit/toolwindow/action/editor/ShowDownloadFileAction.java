@@ -1,6 +1,7 @@
 package io.github.wrongch.restkit.toolwindow.action.editor;
 
 import com.intellij.ide.actions.RevealFileAction;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -19,6 +20,10 @@ import static io.github.wrongch.restkit.common.RestConstant.HTTP_DOWNLOAD_FILEPA
  * @since 2.0.11
  */
 public class ShowDownloadFileAction extends AnAction {
+
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+    }
 
     @Override
     public void update(@NotNull AnActionEvent e) {
