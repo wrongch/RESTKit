@@ -3,18 +3,14 @@ package io.github.wrongch.restkit.feature.javaimpl.language;
 import com.intellij.lang.Language;
 import com.intellij.lang.java.JavaLanguage;
 import com.intellij.openapi.module.Module;
-import com.intellij.psi.PsiAnnotation;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiIdentifier;
-import com.intellij.psi.PsiMethod;
-import com.intellij.psi.PsiModifierList;
+import com.intellij.psi.*;
 import com.intellij.psi.impl.java.stubs.index.JavaAnnotationIndex;
 import com.intellij.psi.javadoc.PsiDocToken;
 import com.intellij.psi.search.GlobalSearchScope;
 import io.github.wrongch.restkit.common.KV;
 import io.github.wrongch.restkit.common.RestItem;
 import io.github.wrongch.restkit.feature.javaimpl.MethodPath;
+import io.github.wrongch.restkit.feature.javaimpl.helper.PsiAnnotationHelper;
 import io.github.wrongch.restkit.feature.javaimpl.helper.PsiClassHelper;
 import io.github.wrongch.restkit.feature.javaimpl.spring.SpringAnnotationHelper;
 import io.github.wrongch.restkit.feature.javaimpl.spring.SpringControllerAnnotation;
@@ -24,12 +20,7 @@ import io.github.wrongch.restkit.restful.ep.LanguageResolverProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * JavaLanguageResolver, will work when Java enabled
@@ -89,10 +80,9 @@ public class JavaLanguageResolver extends BaseLanguageResolver {
     @Override
     public List<RestItem> findRestItemListInModule(Module module, GlobalSearchScope globalSearchScope) {
         List<RestItem> itemList = new ArrayList<>();
-        SpringControllerAnnotation[] supportedAnnotations = SpringControllerAnnotation.values();
-        for (SpringControllerAnnotation controllerAnnotation : supportedAnnotations) {
+        for (SpringControllerAnnotation ann : SpringControllerAnnotation.values()) {
             // java: 标注了 (Rest)Controller 注解的类，即 Controller 类
-            Collection<PsiAnnotation> psiAnnotations = JavaAnnotationIndex.getInstance().get(controllerAnnotation.getShortName(), module.getProject(), globalSearchScope);
+            Collection<PsiAnnotation> psiAnnotations = JavaAnnotationIndex.getInstance().get(ann.getShortName(), module.getProject(), globalSearchScope);
             for (PsiAnnotation psiAnnotation : psiAnnotations) {
                 PsiModifierList psiModifierList = (PsiModifierList) psiAnnotation.getParent();
                 PsiElement psiElement = psiModifierList.getParent();
@@ -114,7 +104,7 @@ public class JavaLanguageResolver extends BaseLanguageResolver {
                 psiMethods.addAll(Arrays.asList(aSuper.getMethods()));
             }
         }
-        if (psiMethods.size() == 0) {
+        if (psiMethods.isEmpty()) {
             return Collections.emptyList();
         }
 
@@ -131,30 +121,27 @@ public class JavaLanguageResolver extends BaseLanguageResolver {
     @NotNull
     @Override
     public List<KV> buildHeaders(@NotNull PsiElement psiElement) {
-        if (!(psiElement instanceof PsiMethod)) {
+        if (!(psiElement instanceof PsiMethod psiMethod)) {
             return Collections.emptyList();
         }
-        PsiMethod psiMethod = (PsiMethod) psiElement;
         return buildHeaderString(psiMethod);
     }
 
     @NotNull
     @Override
     public List<KV> buildParams(@NotNull PsiElement psiElement) {
-        if (!(psiElement instanceof PsiMethod)) {
+        if (!(psiElement instanceof PsiMethod psiMethod)) {
             return Collections.emptyList();
         }
-        PsiMethod psiMethod = (PsiMethod) psiElement;
         return buildParamString(psiMethod);
     }
 
     @NotNull
     @Override
     public String buildRequestBodyJson(@NotNull PsiElement psiElement) {
-        if (!(psiElement instanceof PsiMethod)) {
+        if (!(psiElement instanceof PsiMethod psiMethod)) {
             return "";
         }
-        PsiMethod psiMethod = (PsiMethod) psiElement;
         String s = buildRequestBodyJson(psiMethod);
         return Objects.nonNull(s) ? s : "";
     }
@@ -162,25 +149,29 @@ public class JavaLanguageResolver extends BaseLanguageResolver {
     @NotNull
     @Override
     public String buildDescription(@NotNull PsiElement psiElement) {
-        if (!(psiElement instanceof PsiMethod)) {
+        if (!(psiElement instanceof PsiMethod psiMethod)) {
             return "";
         }
-        PsiMethod psiMethod = (PsiMethod) psiElement;
 
-        String restName = null;
-        String location;
-        if (psiMethod.getDocComment() != null) {
-            restName = Arrays.stream(psiMethod.getDocComment().getDescriptionElements())
+        String restDoc = Optional.ofNullable(psiMethod.getAnnotation("io.swagger.annotations.ApiOperation"))
+                .map(ann -> PsiAnnotationHelper.getAnnotationValue(ann, "value"))
+                .orElse(null);
+
+        if (restDoc == null && psiMethod.getDocComment() != null) {
+            restDoc = Arrays.stream(psiMethod.getDocComment().getDescriptionElements())
                              .filter(e -> e instanceof PsiDocToken)
                              .filter(e -> StringUtils.isNotBlank(e.getText()))
                              .findFirst()
                              .map(e -> e.getText().trim()).orElse(null);
         }
-        location = psiMethod.getContainingClass().getName().concat("#").concat(psiMethod.getName());
-        if (StringUtils.isNotEmpty(restName)) {
-            location = location.concat("#").concat(restName);
+
+        String desc = psiMethod.getContainingClass().getName().concat("#").concat(psiMethod.getName());
+
+        if (StringUtils.isNotEmpty(restDoc)) {
+            return desc + "#" + restDoc;
         }
-        return location;
+
+        return desc ;
     }
 
     public static class JavaLanguageResolverProvider implements LanguageResolverProvider {

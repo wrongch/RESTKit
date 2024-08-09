@@ -116,7 +116,11 @@ public class RestSearchEverywhereContributor implements WeightedSearchEverywhere
             PsiNavigateUtil.navigate(((PsiRestItem) selected).getPsiElement());
         } else {
             RestToolWindowFactory.getRestServiceToolWindow(myProject, restServiceToolWindow -> {
-                restServiceToolWindow.navigateToTree(selected.getUrl(), ObjectUtils.defaultIfNull(selected.getMethod(), HttpMethod.GET).name(), selected.getModuleName());
+                restServiceToolWindow.navigateToTree(
+                        selected.getUrl(),
+                        ObjectUtils.defaultIfNull(selected.getMethod(), HttpMethod.GET).name(),
+                        selected.getModuleName()
+                );
             });
         }
         return true;
