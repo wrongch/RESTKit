@@ -264,7 +264,7 @@ public class RestServiceClient extends JPanel implements DataProvider {
                         String protocol = StringUtils.defaultIfEmpty(configMap.get(PROTOCOL), PROTOCOL_HTTP);
 
                         RestClient restClient = RequestHelper.getRestClient(protocol, () -> {
-                            List<String> collect = RequestHelper.getRestClient().stream().map(RestClient::getProtocol).collect(Collectors.toList());
+                            List<String> collect = RequestHelper.getRestClient().stream().map(RestClient::getProtocol).toList();
                             NotifierUtils.warnBalloon("Not supported " + protocol + " protocol", "support " + collect + ", and use http protocol for now. You should try find supported extensions of RESTKit.", project);
                             return new HttpClient();
                         });
@@ -311,8 +311,7 @@ public class RestServiceClient extends JPanel implements DataProvider {
         try {
             ScriptUtils.handlePreRequestScript(request, project);
         } catch (Exception e) {
-            e.printStackTrace();
-            return new RequestInfo(request, "Pre-request Script Error: \n\n" + e.toString());
+            return new RequestInfo(request, "Pre-request Script Error: \n\n" + e);
         }
 
         RequestInfo requestInfo = restClient.sendRequest(request, project);
@@ -325,8 +324,7 @@ public class RestServiceClient extends JPanel implements DataProvider {
             try {
                 ScriptUtils.handlePostRequestScript(request, requestInfo.getResponse(), project);
             } catch (Exception e) {
-                e.printStackTrace();
-                requestInfo.setErrMsg("Post-request Script Error: \n\n" + e.toString());
+                requestInfo.setErrMsg("Post-request Script Error: \n\n" + e);
             }
         }
         return requestInfo;
