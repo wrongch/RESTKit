@@ -3,6 +3,9 @@ plugins {
     id('org.jetbrains.intellij') version '1.16.1'
 }
 
+//plugin("com.intellij.modules.json:243.20847.40")
+
+
 group 'io.github.newhoo.restkit'
 version '2024.8.8'
 
@@ -25,11 +28,11 @@ dependencies {
 
 intellij {
     pluginName.set('RESTKit')
-    version.set('2023.3')
+    version.set('2024.3')
     type.set("IC")
     updateSinceUntilBuild.set(false)
     downloadSources.set(true)
-    plugins.set(['java'])
+    plugins.set(['java','com.intellij.modules.json'])
 //    plugins.set('java, Kotlin'.split(',').map(String::trim).filter(String::isNotEmpty))
     sandboxDir.set("${rootProject.rootDir}/idea-sandbox")
 }

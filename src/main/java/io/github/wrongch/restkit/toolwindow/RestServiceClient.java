@@ -22,27 +22,14 @@ import com.intellij.ui.components.JBTextField;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBUI;
-import io.github.wrongch.restkit.common.HttpMethod;
-import io.github.wrongch.restkit.common.KV;
-import io.github.wrongch.restkit.common.Request;
-import io.github.wrongch.restkit.common.RequestInfo;
-import io.github.wrongch.restkit.common.RestClientApiInfo;
-import io.github.wrongch.restkit.common.RestClientData;
-import io.github.wrongch.restkit.common.RestClientEditorInfo;
-import io.github.wrongch.restkit.common.RestDataKey;
-import io.github.wrongch.restkit.common.RestItem;
+import io.github.wrongch.restkit.common.*;
 import io.github.wrongch.restkit.config.Environment;
 import io.github.wrongch.restkit.config.EnvironmentConfigurable;
 import io.github.wrongch.restkit.parameter.library.RestParameterListener;
 import io.github.wrongch.restkit.restful.RequestHelper;
 import io.github.wrongch.restkit.restful.RestClient;
 import io.github.wrongch.restkit.restful.http.HttpClient;
-import io.github.wrongch.restkit.util.EnvironmentUtils;
-import io.github.wrongch.restkit.util.FileUtils;
-import io.github.wrongch.restkit.util.JsonUtils;
-import io.github.wrongch.restkit.util.NotifierUtils;
-import io.github.wrongch.restkit.util.ScriptUtils;
-import io.github.wrongch.restkit.util.ToolkitUtil;
+import io.github.wrongch.restkit.util.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -52,23 +39,14 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static io.github.wrongch.restkit.common.RestConstant.PLACEHOLDER_URL;
-import static io.github.wrongch.restkit.common.RestConstant.PROTOCOL;
-import static io.github.wrongch.restkit.common.RestConstant.PROTOCOL_HTTP;
+import static io.github.wrongch.restkit.common.RestConstant.*;
 import static io.github.wrongch.restkit.config.SettingListener.ENV_UPDATE;
 import static io.github.wrongch.restkit.parameter.library.RestParameterListener.REST_PARAMETER_UPDATE;
 import static io.github.wrongch.restkit.toolwindow.RestServiceListener.REST_SERVICE_SELECT;
-import static io.github.wrongch.restkit.util.IdeaUtils.createEditor;
-import static io.github.wrongch.restkit.util.IdeaUtils.getEditorText;
-import static io.github.wrongch.restkit.util.IdeaUtils.setEditorText;
+import static io.github.wrongch.restkit.util.IdeaUtils.*;
 
 /**
  * RestServiceClient
@@ -392,23 +370,23 @@ public class RestServiceClient extends JPanel implements DataProvider {
         }
 
         String headerStr = headers.stream()
-                                  .map(kv -> kv.getKey() + ": " + kv.getValue())
-                                  .collect(Collectors.joining("\n"));
+                .map(kv -> kv.getKey() + ": " + kv.getValue())
+                .collect(Collectors.joining("\n"));
 
         setEditorText(requestHeaderEditor, headerStr, project);
     }
 
     private void setConfig(List<KV> requestConfig) {
         String paramStr = requestConfig.stream()
-                                       .map(kv -> kv.getKey() + ": " + kv.getValue())
-                                       .collect(Collectors.joining("\n"));
+                .map(kv -> kv.getKey() + ": " + kv.getValue())
+                .collect(Collectors.joining("\n"));
         setEditorText(requestConfigEditor, paramStr, project);
     }
 
     private void setParams(List<KV> requestParams) {
         String paramStr = requestParams.stream()
-                                       .map(kv -> kv.getKey() + ": " + kv.getValue())
-                                       .collect(Collectors.joining("\n"));
+                .map(kv -> kv.getKey() + ": " + kv.getValue())
+                .collect(Collectors.joining("\n"));
         setEditorText(requestParamEditor, paramStr, project);
     }
 

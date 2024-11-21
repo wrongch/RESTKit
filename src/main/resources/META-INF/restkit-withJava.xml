@@ -2,6 +2,7 @@
     <!-- 无效，要放plugin.xml  -->
     <!--    <depends optional="true" config-file="restkit-withKotlin.xml">org.jetbrains.kotlin</depends>-->
 
+    <depends>com.intellij.modules.json</depends>
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <projectService serviceImplementation="io.github.wrongch.restkit.feature.javaimpl.config.FilterParamComponent"/>
